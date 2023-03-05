@@ -115,3 +115,4 @@ const gui = new GUI();
         currentFps++;
     }, 20);
 })();
+//# sourceMappingURL=main.js.map

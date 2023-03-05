@@ -26,3 +26,4 @@ export default class GUIElement extends EventObject {
         return posX >= this.posX && posX < this.posX + this.sizeX && posY >= this.posY && posY < this.posY + this.sizeY;
     }
 }
+//# sourceMappingURL=GUIElement.js.map

@@ -7,3 +7,4 @@ export default class Screen {
             element.draw();
     }
 }
+//# sourceMappingURL=Screen.js.map

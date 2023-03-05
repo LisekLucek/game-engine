@@ -12,3 +12,4 @@ export default class EventObject {
             callback(...params);
     }
 }
+//# sourceMappingURL=EventObject.js.map

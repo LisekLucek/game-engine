@@ -53,3 +53,4 @@ export default class GUIInteractiveElement extends GUIElement {
             this.pressed = false;
     }
 }
+//# sourceMappingURL=GUIInteractiveElement.js.map

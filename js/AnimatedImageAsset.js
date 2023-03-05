@@ -37,3 +37,4 @@ export default class AnimatedImageAsset extends ImageAsset {
         this._image = this._frameImages[this.currentFrame];
     }
 }
+//# sourceMappingURL=AnimatedImageAsset.js.map

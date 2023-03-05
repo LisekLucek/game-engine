@@ -12,3 +12,4 @@ export default class MainMenu extends Screen {
         this.elements.push(settingsButton);
     }
 }
+//# sourceMappingURL=MainMenu.js.map

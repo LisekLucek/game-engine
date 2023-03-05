@@ -10,3 +10,4 @@ export default class ImageAsset {
     }
     image(_) { return this._image; }
 }
+//# sourceMappingURL=ImageAsset.js.map

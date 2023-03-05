@@ -26,3 +26,4 @@ export default class GUIButton extends GUIInteractiveElement {
         this._canvas.writeText(this.text, this.posX + Math.floor(this.sizeX / 2), this.posY + Math.floor(this.sizeY / 2) + 1, undefined, "center", "middle");
     }
 }
+//# sourceMappingURL=GUIButton.js.map

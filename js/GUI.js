@@ -6,3 +6,4 @@ export default class GUI {
         this._currentScreen.draw();
     }
 }
+//# sourceMappingURL=GUI.js.map

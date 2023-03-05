@@ -99,3 +99,4 @@ export default class Canvas extends EventObject {
         });
     }
 }
+//# sourceMappingURL=Canvas.js.map
