@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Game Engine</title>
+	<style>
+		@font-face
+		{
+			font-family: "pixelmix";
+			src: url("assets/font/pixelmix.woff2") format("woff2"),
+				url("assets/font/pixelmix.woff") format("woff");
+			font-weight: normal;
+			font-style: normal;
+			font-display: swap;
+		}
+		@font-face
+		{
+			font-family: "f6px";
+			src: url("assets/font/6pxNormal.woff2") format("woff2"),
+				url("assets/font/6pxNormal.woff") format("woff");
+			font-weight: normal;
+			font-style: normal;
+			font-display: swap;
+		}
+		body
+		{
+			margin: 0;
+			font-size: 12px;
+			font-family: "pixelmix";
+			background: #000;
+			color: #FFF;
+		}
+		#window
+		{
+			width: 100vw;
+			height: 100vh;
+			vertical-align: top;
+			object-fit: contain;
+			image-rendering: crisp-edges;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="window" width="360" height="270"></canvas>
+	<script src="js/main.js" type="module"></script>
+</body>
+</html>
