@@ -1,0 +1,24 @@
+// Object management
+Scene:
++ elements: GraphicsElement[]
++ canvas: Canvas
+
+
++ nextFrame()
+
+
+// Drawing objects
+// Contains list with all the images
+Canvas:
+
+
+
+- _assets = []
+
+
+
+init()
+{
+    // Loading all the assets from the asset list
+    //
+}

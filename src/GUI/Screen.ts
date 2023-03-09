@@ -1,12 +1,12 @@
+import { RenderObject } from "../Scene.js";
+import Texture from "../textures/Texture.js";
 import GUIElement from "./GUIElements/GUIElement.js";
 
-export default abstract class Screen
+export default abstract class Screen implements RenderObject
 {
-	elements: GUIElement[] = [];
+	textures: Texture[] = [];
+	posX: number = 0;
+	posY: number = 0;
 
-	draw()
-	{
-		for (const element of this.elements)
-			element.draw();
-	}
+	elements: GUIElement[] = [];
 }

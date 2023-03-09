@@ -1,6 +1,6 @@
-import AnimatedImageAsset from "./AnimatedImageAsset.js";
 import EventObject from "./EventObject.js";
-import ImageAsset from "./ImageAsset.js";
+import ImageAsset, { ImageAssetData } from "./textures/ImageAsset.js";
+import Texture from "./textures/Texture.js";
 
 export default
 class Canvas extends EventObject
@@ -26,12 +26,23 @@ class Canvas extends EventObject
 		this.ctx.textAlign = "left";
 		this.ctx.textBaseline = "top";
 
-		this.bindEvents();
+		this._bindEvents();
 	}
 
-	drawImage(image: ImageAsset, posX: number, posY: number)
+	drawImage(image: Texture, posX: number, posY: number)
 	{
-		this.ctx.drawImage(image.image(this.frame), posX, posY);
+		try
+		{
+			this.ctx.drawImage(image.image(this.frame), posX, posY);
+		}
+		catch(e)
+		{
+			this.ctx.fillStyle = "#000";
+			this.ctx.fillRect(posX, posY, 16, 16);
+			this.ctx.fillStyle = "#F0F";
+			this.ctx.fillRect(posX, posY, 8, 8);
+			this.ctx.fillRect(posX + 8, posY + 8, 8, 8);
+		}
 	}
 
 	writeText(text: string, posX: number, posY: number, colour: string = "#FFF", align: CanvasTextAlign = "left", baseline: CanvasTextBaseline = "top")
@@ -49,78 +60,7 @@ class Canvas extends EventObject
 	}
 
 
-	//===== Assets management =====//
-
-	addAsset(name: string, animated: boolean = false, frames: number = 1, framesPerImage: number = 1): ImageAsset
-	{
-		if (this._assets[name])
-			return this._assets[name];
-
-		console.log(`Added asset: ${ name }`);
-		if (!animated)
-		{
-			const asset = new ImageAsset(name);
-			this._assets[name] = asset;
-
-			return asset;
-		}
-
-
-		const asset = new AnimatedImageAsset(name, frames, framesPerImage);
-		this._assets[name] = asset;
-
-		return asset;
-	}
-
-	async loadAssets()
-	{
-		this.ctx.fillStyle = "#A00";
-		this.ctx.fillRect(0, 0, this.c.width, this.c.height);
-		
-		this.ctx.fillStyle = "#FFF";
-		this.ctx.textAlign = "center";
-		this.ctx.textBaseline = "bottom";
-		this.ctx.font = "8px pixelmix";
-		this.ctx.fillText("Loading assets...", this.c.width / 2, this.c.height / 2);
-
-		this.ctx.fillStyle = "#300";
-		this.ctx.fillRect(10, this.c.height / 2 + 5, this.c.width - 20, 10);
-
-		const assetsCount = Object.keys(this._assets).length;
-
-		this.ctx.fillStyle = "#FFF";
-		this.ctx.textAlign = "right";
-		this.ctx.textBaseline = "top";
-		this.ctx.font = "8px f6px";
-		this.ctx.fillText(`0 / ${ assetsCount }`, this.c.width - 10, this.c.height / 2 + 18);
-
-		let i = 0;
-		for (const name in this._assets)
-		{
-			const asset = this._assets[name];
-			await asset.loadAsset();
-			console.log(`Loaded asset: ${ name }`);
-
-			// Clearing text
-			this.ctx.fillStyle = "#A00";
-			this.ctx.fillRect(10, this.c.height / 2 + 16, this.c.width - 20, 10);
-
-			// Filling progress bar
-			this.ctx.fillStyle = "#FFF";
-			this.ctx.fillRect(10, this.c.height / 2 + 5, Math.floor((this.c.width - 20) * ++i / assetsCount), 10);
-			
-			// Writting text
-			this.ctx.textAlign = "right";
-			this.ctx.fillText(`${ i } / ${ assetsCount }`, this.c.width - 10, this.c.height / 2 + 16);
-
-			this.ctx.textAlign = "left";
-			this.ctx.fillText(name, 10, this.c.height / 2 + 16);
-		}
-
-		this.ctx.clearRect(0, 0, this.c.width, this.c.height);
-	}
-
-	private bindEvents()
+	private _bindEvents()
 	{
 		const canvasAspectRatio = this.c.width / this.c.height;
 

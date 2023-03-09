@@ -8,10 +8,12 @@ export default class GUIInteractiveElement extends GUIElement
 
 	private _clickable: boolean = false;
 	pressed: boolean = false;
+	protected _canvas: Canvas;
 
-	constructor(posX: number, posY: number, sizeX: number, sizeY: number, canvas: Canvas, textureName: string | string[])
+	constructor(posX: number, posY: number, sizeX: number, sizeY: number, canvas: Canvas, textureName: string)
 	{
-		super(posX, posY, sizeX, sizeY, canvas, textureName);
+		super(posX, posY, sizeX, sizeY, textureName);
+		this._canvas = canvas;
 	}
 
 	on(event: string, callback: Function)

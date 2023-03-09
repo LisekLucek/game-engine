@@ -2,9 +2,13 @@ import Canvas from "../Canvas.js";
 import Screen from "./Screen.js";
 import GUIElement from "./GUIElements/GUIElement.js";
 import GUIButton from "./GUIElements/GUIButton.js";
+import { RenderObject } from "../Scene.js";
+import GUIInteractiveElement from "./GUIElements/GUIInteractiveElement.js";
 
-export default class MainMenu extends Screen
+export default class MainMenu extends Screen implements RenderObject
 {
+	renderObjects: RenderObject[] = [];
+
 	constructor(canvas: Canvas)
 	{
 		super();
@@ -17,7 +21,10 @@ export default class MainMenu extends Screen
 			console.log("Clicked!");
 		});
 
-		this.elements.push(newGameButton);
-		this.elements.push(settingsButton);
+		this.renderObjects.push(newGameButton);
+		this.renderObjects.push(settingsButton);
+
+		// this.elements.push(newGameButton);
+		// this.elements.push(settingsButton);
 	}
 }

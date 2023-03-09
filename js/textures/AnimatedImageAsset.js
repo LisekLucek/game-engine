@@ -1,5 +1,5 @@
-import ImageAsset from "./textures/ImageAsset.js";
-export default class AnimatedImageAsset extends ImageAsset {
+import Texture from "./Texture.js";
+export default class AnimatedImageAsset extends Texture {
     constructor(name, frames = 1, framesPerImage = 1) {
         super(name);
         this.currentFrame = 0;

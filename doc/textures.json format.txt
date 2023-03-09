@@ -1,0 +1,12 @@
+[
+    Static textures:
+    "path/name",
+
+    Animated texures:
+	{
+		"name": "characters/fox_idle_left",
+		"frames": 2,
+		"duration": 100,
+		"loop": true
+	}
+]

@@ -1,11 +1,12 @@
 import GUIElement from "./GUIElement.js";
 export default class GUIInteractiveElement extends GUIElement {
     constructor(posX, posY, sizeX, sizeY, canvas, textureName) {
-        super(posX, posY, sizeX, sizeY, canvas, textureName);
+        super(posX, posY, sizeX, sizeY, textureName);
         this._hoverable = false;
         this.hovering = false;
         this._clickable = false;
         this.pressed = false;
+        this._canvas = canvas;
     }
     on(event, callback) {
         super.on(event, callback);

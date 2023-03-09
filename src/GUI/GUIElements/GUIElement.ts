@@ -1,6 +1,7 @@
+import AssetLoader from "../../AssetLoader.js";
 import Canvas from "../../Canvas.js";
 import EventObject from "../../EventObject.js";
-import ImageAsset from "../../ImageAsset.js";
+import Texture from "../../textures/Texture.js";
 
 export default class GUIElement extends EventObject
 {
@@ -9,10 +10,11 @@ export default class GUIElement extends EventObject
 	sizeX: number;
 	sizeY: number;
 
-	protected _canvas: Canvas;
-	private _texture: ImageAsset;
+	textures = [];
 
-	constructor(posX: number, posY: number, sizeX: number, sizeY: number, canvas: Canvas, textureName: string | string[])
+	protected _texture: Texture;
+
+	constructor(posX: number, posY: number, sizeX: number, sizeY: number, textureName: string)
 	{
 		super();
 
@@ -20,29 +22,18 @@ export default class GUIElement extends EventObject
 		this.posY = posY;
 		this.sizeX = sizeX;
 		this.sizeY = sizeY;
-		this._canvas = canvas;
-		
-		if (typeof textureName != "string")
-		{
-			this._texture = canvas.addAsset(textureName.shift());
 
-			for (const texture of textureName)
-			{
-				canvas.addAsset(texture);
-			}
-		}
-		else
-			this._texture = canvas.addAsset(textureName);
-	}
-
-	draw()
-	{
-		this._canvas.drawImage(this._texture, this.posX, this.posY);
+		this.setTexture(textureName);
 	}
 
 	setTexture(name: string)
 	{
-		this._texture = this._canvas.addAsset(name);
+		if (this.textures.length)
+			this.textures.pop();
+
+		this._texture = AssetLoader.getTexture(name);
+
+		this.textures.push(this._texture);
 	}
 
 	protected _isInBoudingBox(posX: number, posY: number): boolean

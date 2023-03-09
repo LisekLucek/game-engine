@@ -1,10 +1,9 @@
 export default class Screen {
     constructor() {
+        this.textures = [];
+        this.posX = 0;
+        this.posY = 0;
         this.elements = [];
-    }
-    draw() {
-        for (const element of this.elements)
-            element.draw();
     }
 }
 //# sourceMappingURL=Screen.js.map
